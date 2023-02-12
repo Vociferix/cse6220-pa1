@@ -1,0 +1,22 @@
+#PBS -N jbernard8-cse6220-pa1
+#PBS -A jbernard8
+#PBS -l walltime=10:00
+#PBS -q coc-ice-multi
+#PBS -j oe
+
+N="${1}"
+if [ "$N" = "" ]; then
+    N=1000000
+fi
+
+echo "p, n, s, t" > "${PBS_O_WORKDIR}/results.csv"
+
+run_job () {
+    echo -n "$1, $N, " >> "${PBS_O_WORKDIR}/results.csv"
+    mpirun -np $1 "${PBS_O_WORKDIR}/int_calc" $N >> "${PBS_O_WORKDIR}/results.csv"
+}
+
+run_job 1
+for P in `seq 2 2 ${PBS_NP}`; do
+    run_job $P
+done
