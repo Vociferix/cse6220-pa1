@@ -18,7 +18,7 @@ static double calc(int rank, int size, long long n) {
     const double n_squared = static_cast<double>(n) * n;
     const double four_n = 4.0 * n;
 
-    for (long long i = rank; i < n; i += static_cast<long long>(size)) {
+    for (long long i = rank + 1; i < n + 1; i += static_cast<long long>(size)) {
         // Rearranged: 4n^2 / (n^2 + (i - 0.5)^2)
         // Also, 4n is used instead of 4n^2 since there would be a
         // division by n at the end anyway, so the division by n

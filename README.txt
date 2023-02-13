@@ -26,8 +26,7 @@ Georgia Tech COC-ICE cluster. Each run of the program was
 executed on a single node with a varying number of processors.
 Experiements not shown here that used multiple nodes had far
 worse results, presumably due to decreased locality and thus
-increased latency. See run.sh and run.pbs to see how the
-experiement was executed.
+increased latency.
 
 p,  n,       s,              t
 1,  1000000, 3.141594653589, 0.001549482346
